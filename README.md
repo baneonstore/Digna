@@ -12,6 +12,6 @@ An application that allows you to perform operations on an academic evaluation g
 
 You can also see the list of all the [contributors](https://github.com/baneonstore/Digna/contributors) who have participated in this project.
 
-## Licencia 📄
+## Licencia
 
 This project is under the MIT License - see the file [LICENSE.md](LICENSE.md) for more details
