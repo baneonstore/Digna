@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
 
+# Copyright © 2020 baneon - MIT License
+# See `LICENSE` included in the source distribution for details.
+
 import sys
 import pathlib
 
 from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtCore import pyqtSlot, Qt, QVariant
 
-from data.gui.principal import Ui_MainWindow
-from data.gui.testDialog import Ui_Dialog
+from gui.MainWindow import Ui_MainWindow
+from gui.ItemEdit import Ui_Dialog
 
 
 # === AlignCenterText ===
@@ -55,7 +58,8 @@ class main(QtWidgets.QMainWindow):
         # Acomoda el ancho de las columnas.
         self.ui.tableWidget.resizeColumnsToContents()
 
-        self.ui.actionColumnas.triggered['bool'].connect(self.openFileSaveDialog)
+        self.ui.actionSave.triggered['bool'].connect(self.openFileSaveDialog)
+        self.ui.actionEditItem.triggered['bool'].connect(self.openDialog)
         self.ui.tableWidget.cellChanged['int', 'int'].connect(self.get_tableWidget_values)
 
 
@@ -65,6 +69,11 @@ class main(QtWidgets.QMainWindow):
         accept = 'Documento de Evaluación (*.digna)'
         files, _ = QtWidgets.QFileDialog.getSaveFileName(self, title, '', accept)
         print(files, _)
+
+
+    def openDialog(self, q):
+        myDialog = Dialog()
+        myDialog.exec()
 
 
     @pyqtSlot(int, int)
