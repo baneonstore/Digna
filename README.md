@@ -1,3 +1,5 @@
+![Digna logo](https://raw.githubusercontent.com/baneonstore/Digna/development/Digna/src/Texture/LogoLarge.png)
+
 # Digna
 _Create your portable database for academic evaluations._
 
