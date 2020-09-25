@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # Copyright © 2020 baneon - MIT License
 # See `LICENSE` included in the source distribution for details.
 
@@ -48,7 +46,7 @@ class main(QtWidgets.QMainWindow):
         item = QtWidgets.QTableWidgetItem()
         self.ui.tableWidget.setHorizontalHeaderItem(0, item)
         item = self.ui.tableWidget.horizontalHeaderItem(0)
-        item.setText('ID')
+        item.setText("ID")
 
         # === AlignCenterText ===
         delegate = AlignDelegate(self.ui.tableWidget)
@@ -58,19 +56,20 @@ class main(QtWidgets.QMainWindow):
         # Acomoda el ancho de las columnas.
         self.ui.tableWidget.resizeColumnsToContents()
 
-        self.ui.actionSave.triggered['bool'].connect(self.openFileSaveDialog)
-        self.ui.actionEditItem.triggered['bool'].connect(self.openDialog)
-        self.ui.tableWidget.cellChanged['int', 'int'].connect(self.get_tableWidget_values)
+        self.ui.actionSave.triggered["bool"].connect(self.openFileSaveDialog)
+        self.ui.actionEditItem.triggered["bool"].connect(self.openDialog)
+        self.ui.tableWidget.cellChanged["int", "int"].connect(self.get_tableWidget_values)
 
 
     @pyqtSlot(bool)
     def openFileSaveDialog(self, q):
-        title = 'Guardar Archivo'
-        accept = 'Documento de Evaluación (*.digna)'
-        files, _ = QtWidgets.QFileDialog.getSaveFileName(self, title, '', accept)
+        title = "Guardar Archivo"
+        accept = "Documento de Evaluación (*.digna)"
+        files, _ = QtWidgets.QFileDialog.getSaveFileName(self, title, "", accept)
         print(files, _)
 
 
+    @pyqtSlot(bool)
     def openDialog(self, q):
         myDialog = Dialog()
         myDialog.exec()
@@ -83,7 +82,7 @@ class main(QtWidgets.QMainWindow):
         print(self.ui.tableWidget.item(x, y).text())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     application = main()
     application.show()
